@@ -1,3 +1,7 @@
+// This page uses a Floating Button to add random english words to the Shopping List
+// It's Cool cause i learn how to use States to update the list of products
+// Tiny steps to make code more clean and organized.
+
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
