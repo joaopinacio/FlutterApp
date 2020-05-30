@@ -1,33 +1,5 @@
 import 'package:flutter/material.dart';
 
-// void main() {
-//   runApp(MaterialApp(
-//     title: 'Shopping App',
-//     home: Scaffold(
-//       appBar: AppBar(
-//         // leading: CircleAvatar(
-//         //   backgroundColor: Colors.white,
-//         //   child: Text('S'),
-//         // ),
-//         title: Text('Shopping List'),
-//         centerTitle: false,
-//       ),
-//       body: ShoppingList(
-//         products: <Product>[
-//           Product(name: 'Eggs'),
-//           Product(name: 'Flour'),
-//           Product(name: 'Chocolate chips')
-//         ],
-//       ),
-//       floatingActionButton: FloatingActionButton(
-//         tooltip: 'Add', // used by assistive technologies
-//         child: Icon(Icons.add),
-//         onPressed: null,
-//       ),
-//     ),
-//   ));
-// }
-
 void main() {
   runApp(MaterialApp(
     title: 'Shopping App',
@@ -35,7 +7,7 @@ void main() {
       products: <Product>[
         Product(name: 'Eggs'),
         Product(name: 'Flour'),
-        Product(name: 'Chocolate chips')
+        Product(name: 'Chocolate chips'),
       ],
     ),
   ));
@@ -129,8 +101,7 @@ class _ShoppingListState extends State<ShoppingList> {
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: 8.0),
-        children: widget.products.map((Product product) {
-          // widget. (to use the Stateful Widget that is extended)
+        children: widget.products.map((Product product) { // widget. (to use the Stateful Widget that is extended) 
           return ShoppingListItem(
             product: product,
             inCart: _shoppingCart.contains(product),
@@ -140,19 +111,4 @@ class _ShoppingListState extends State<ShoppingList> {
       ),
     );
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return ListView(
-  //     padding: EdgeInsets.symmetric(vertical: 8.0),
-  //     children: widget.products.map((Product product) {
-  //       // widget. (to use the Stateful Widget that is extended)
-  //       return ShoppingListItem(
-  //         product: product,
-  //         inCart: _shoppingCart.contains(product),
-  //         onCartChanged: _handleCartChanged,
-  //       );
-  //     }).toList(),
-  //   );
-  // }
 }
