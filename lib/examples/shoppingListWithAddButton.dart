@@ -1,10 +1,7 @@
-// This page uses a Floating Button to add random english words to the Shopping List
-// It's Cool cause i learn how to use States to update the list of products
-// Tiny steps to make code more clean and organized.
-
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
+// Main Function
 void main() {
   runApp(MaterialApp(
     title: 'Shopping App',
@@ -12,6 +9,7 @@ void main() {
   ));
 }
 
+// Class to create a state
 class Home extends StatefulWidget {
   // This class is the configuration for the state. It holds the
   // values (in this case nothing) provided by the parent and used
@@ -23,16 +21,20 @@ class Home extends StatefulWidget {
 }
 
 
+// Class to make the objects of home can be mutable
 class _HomeState extends State<Home> {
   List<Product> productsList = List<Product>();
 
-   void _addProducts() {
+  // Method to add Products in a product list
+  void _addProducts() {
+    // setState -> Basically everytime that we call this function the build method it will called
     setState(() {
       Product product = new Product(name: WordPair.random().asPascalCase);
       productsList.add(product);
     });
   }
 
+  // build method to load the widget context (home)
   @override
   Widget build(BuildContext context) {
     // Scaffold is a layout for the major Material Components.
@@ -56,11 +58,16 @@ class _HomeState extends State<Home> {
       body: ShoppingList(
         products: productsList
       ),
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        child: Container(height: 50.0,),
+      ),
       floatingActionButton: FloatingActionButton(
         tooltip: 'Add', // used by assistive technologies
         child: Icon(Icons.add),
         onPressed: _addProducts,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
@@ -70,8 +77,10 @@ class Product {
   final String name;
 }
 
+// Creating a new type of void method to use when cart is changed
 typedef void CartChangedCallback(Product product, bool inCart);
 
+// Class to refer a every item of the shopping list (Basically: Row = ShoppingListItem)
 class ShoppingListItem extends StatelessWidget {
   ShoppingListItem({this.product, this.inCart, this.onCartChanged})
       : super(key: ObjectKey(product));
@@ -113,6 +122,7 @@ class ShoppingListItem extends StatelessWidget {
   }
 }
 
+// Class to create a state
 class ShoppingList extends StatefulWidget {
   ShoppingList({Key key, this.products}) : super(key: key);
 
@@ -128,6 +138,7 @@ class ShoppingList extends StatefulWidget {
   _ShoppingListState createState() => _ShoppingListState();
 }
 
+// Class to make the objects of ShoppingList can be mutable
 class _ShoppingListState extends State<ShoppingList> {
   Set<Product> _shoppingCart = Set<Product>();
 
