@@ -58,11 +58,16 @@ class _HomeState extends State<Home> {
       body: ShoppingList(
         products: productsList
       ),
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        child: Container(height: 50.0,),
+      ),
       floatingActionButton: FloatingActionButton(
         tooltip: 'Add', // used by assistive technologies
         child: Icon(Icons.add),
         onPressed: _addProducts,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
