@@ -36,15 +36,13 @@ class _HomeState extends State<Home> {
   // build method to load the widget context (home)
   @override
   Widget build(BuildContext context) {
-
     final descTextStyle = TextStyle(
-      color: Colors.black,
-      fontWeight: FontWeight.w800,
-      fontFamily: 'Roboto',
-      letterSpacing: 0.5,
-      fontSize: 18,
-      height: 2
-    );
+        color: Colors.black,
+        fontWeight: FontWeight.w800,
+        fontFamily: 'Roboto',
+        letterSpacing: 0.5,
+        fontSize: 18,
+        height: 2);
 
     final iconList = DefaultTextStyle.merge(
       style: descTextStyle,
@@ -110,7 +108,6 @@ class _HomeState extends State<Home> {
       ),
     );
 
-
     // Scaffold is a layout for the major Material Components.
     return Scaffold(
       appBar: AppBar(
@@ -130,26 +127,31 @@ class _HomeState extends State<Home> {
       ),
       // body is the majority of the screen.
       body: Container(
-        child: Column(
+          padding: EdgeInsets.all(20),
+        child: ListView(
           children: <Widget>[
-            Text('Title',
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w800,
-                fontFamily: 'Roboto',
-                letterSpacing: 0.5,
-                fontSize: 22,
-                height: 2
-              )),
-            Text('TEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXT',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w800,
-                  fontFamily: 'Roboto',
-                  letterSpacing: 0.5,
-                  fontSize: 20,
-                  height: 2
-                )),
+              Text('Title',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w800,
+                      fontFamily: 'Roboto',
+                      letterSpacing: 0.5,
+                      fontSize: 22,
+                      height: 2
+                  ),
+                  textAlign: TextAlign.center,
+              ),
+              Text('TEXTTEXTTEXTTEXTTEXTTEXTTabhusabdsaydbsahsayasgyasgEXTTEXTTEXTTEXTTEXTTEXT',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w800,
+                        fontFamily: 'Roboto',
+                        letterSpacing: 0.5,
+                        fontSize: 20,
+                        height: 2
+                    ),
+                    textAlign: TextAlign.center,
+              ),
             ratings,
             iconList
           ],
@@ -160,7 +162,9 @@ class _HomeState extends State<Home> {
       // ),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
-        child: Container(height: 50.0,),
+        child: Container(
+          height: 50.0,
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         tooltip: 'Add', // used by assistive technologies
@@ -260,7 +264,8 @@ class _ShoppingListState extends State<ShoppingList> {
   Widget build(BuildContext context) {
     return ListView(
       padding: EdgeInsets.symmetric(vertical: 8.0),
-      children: widget.products.map((Product product) { // widget. (to use the Stateful Widget that is extended)
+      children: widget.products.map((Product product) {
+        // widget. (to use the Stateful Widget that is extended)
         return ShoppingListItem(
           product: product,
           inCart: _shoppingCart.contains(product),
